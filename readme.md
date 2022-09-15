@@ -5,3 +5,7 @@ Final attack.
 Lectures:
 
 * [x] Data definition and datatypes
+
+Exercises:
+
+* [x] Data definition and datatypes
