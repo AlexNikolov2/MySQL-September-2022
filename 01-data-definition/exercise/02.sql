@@ -1,0 +1,7 @@
+ALTER TABLE `minions`
+ADD COLUMN `town_id` INT;
+
+ALTER TABLE `minions`
+ADD CONSTRAINT `FK_MINON_TOWN`
+FOREIGN KEY(`town_id`)
+REFERENCES `towns`(`id`);
