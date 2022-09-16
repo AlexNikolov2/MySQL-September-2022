@@ -1,0 +1,18 @@
+CREATE TABLE `users`
+(
+	`id` INT PRIMARY KEY UNIQUE AUTO_INCREMENT,
+    `username` VARCHAR(30) UNIQUE NOT NULL,
+    `password` VARCHAR(26) NOT NULL,
+    `profile_picture` BLOB,
+    `last_login_time` TIMESTAMP,
+    `is_deleted` BOOLEAN
+);
+
+INSERT INTO `users`
+(`username`, `password`)
+VALUES
+('Pesho', '12345'),
+('Gosho', '12345'),
+('Stamat', '12345'),
+('Tosho', '12345'),
+('Losho', '12345');
