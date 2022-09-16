@@ -12,7 +12,7 @@ INSERT INTO `users`
 (`username`, `password`)
 VALUES
 ('Pesho', '12345'),
-('Gosho', '12345'),
-('Stamat', '12345'),
-('Tosho', '12345'),
-('Losho', '12345');
+('Hitler', '12345'),
+('Mark', '12345'),
+('Mikel', '12345'),
+('Luis', '12345');
