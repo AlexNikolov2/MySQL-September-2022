@@ -5,6 +5,7 @@ Final attack.
 Lectures:
 
 * [x] Data definition and datatypes
+* [x] Basic CRUD
 
 Exercises:
 
