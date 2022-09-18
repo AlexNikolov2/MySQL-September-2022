@@ -14,3 +14,4 @@ Lectures:
 Exercises:
 
 * [x] Data definition and datatypes
+* [ ] Basic CRUD (12/24 solved)
