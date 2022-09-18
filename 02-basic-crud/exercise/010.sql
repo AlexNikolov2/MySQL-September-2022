@@ -1,0 +1,1 @@
+SELECT `first_name`, `last_name` from `employees` WHERE `manager_id` IS NULL
