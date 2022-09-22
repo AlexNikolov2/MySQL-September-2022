@@ -10,6 +10,7 @@ Lectures:
 
 * [x] Data definition and datatypes
 * [x] Basic CRUD
+* [ ] Built-in functions
 
 Exercises:
 
