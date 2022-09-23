@@ -16,3 +16,4 @@ Exercises:
 
 * [x] Data definition and datatypes
 * [x] Basic CRUD
+* [x] Built-in functions
