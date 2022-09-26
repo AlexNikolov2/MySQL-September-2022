@@ -11,9 +11,11 @@ Lectures:
 * [x] Data definition and datatypes
 * [x] Basic CRUD
 * [ ] Built-in functions
+* [ ] Data Aggregation
 
 Exercises:
 
 * [x] Data definition and datatypes
 * [x] Basic CRUD
 * [x] Built-in functions
+* [ ] Data Aggregation
