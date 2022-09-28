@@ -1,1 +1,1 @@
-SELECT DISTINCT `salary` FROM `employees` ORDER BY `salary` ASC
+SELECT DISTINCT `salary` FROM `employees` ORDER BY `salary` ASC;
