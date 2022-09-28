@@ -46,3 +46,7 @@ WHERE `deposit_group` = 'Troll Chest' GROUP BY `first_letter` ORDER BY `first_le
 --11
 SELECT  `deposit_group`, `is_deposit_expired`, AVG(`deposit_interest`) AS `deposit_interest` FROM `wizzard_deposits`
 WHERE `deposit_start_date` > '1985-01-01' GROUP BY `deposit_group` , `is_deposit_expired` ORDER BY `deposit_group` DESC , `is_deposit_expired` ASC;
+
+--12
+SELECT  `department_id`, MIN(`salary`) AS `minimum_salary` FROM `employees`
+WHERE `department_id` IN (2 , 5, 7) GROUP BY `department_id` ORDER BY `department_id`;
