@@ -1,1 +1,1 @@
-SELECT `user_name`, SUBSTRING_INDEX(`email`, '@', - 1) as `provider` FROM `users` ORDER BY `provider` ASC, `user_name` ASC
+SELECT `user_name`, SUBSTRING_INDEX(`email`, '@', - 1) as `provider` FROM `users` ORDER BY `provider` ASC, `user_name` ASC;
