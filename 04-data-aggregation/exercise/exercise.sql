@@ -66,3 +66,11 @@ GROUP BY `department_id` HAVING NOT `max_salary` BETWEEN 30000 AND 70000 ORDER B
 
 --15
 SELECT COUNT(`salary`) AS `salary` FROM `employees` WHERE `manager_id` IS NULL;
+
+--16
+SELECT  `department_id`,
+    (SELECT DISTINCT `salary` FROM `employees` AS `e`
+		WHERE `e`.`department_id` = `employees`.`department_id`
+        ORDER BY `salary` DESC LIMIT 1 OFFSET 2)
+        AS `third_highest_salary`
+FROM `employees` GROUP BY `department_id` HAVING `third_highest_salary` IS NOT NULL ORDER BY `department_id`;
