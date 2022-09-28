@@ -63,3 +63,6 @@ WHERE `salary` > 30000 AND `manager_id` != 42 GROUP BY `department_id` ORDER BY 
 --14
 SELECT  `department_id`, MAX(`salary`) AS `max_salary` FROM `employees` 
 GROUP BY `department_id` HAVING NOT `max_salary` BETWEEN 30000 AND 70000 ORDER BY `department_id` ASC;
+
+--15
+SELECT COUNT(`salary`) AS `salary` FROM `employees` WHERE `manager_id` IS NULL;
