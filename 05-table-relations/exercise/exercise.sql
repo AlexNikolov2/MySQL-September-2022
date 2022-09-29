@@ -220,3 +220,9 @@ CREATE TABLE `agenda` (
     REFERENCES `subjects` (`subject_id`)
 );
     
+
+--09
+SELECT `mountains`.`mountain_range`,`peaks`.`peak_name`, `peaks`.`elevation` FROM `mountains` JOIN `peaks`
+ON `peaks`.`mountain_id` = `mountains`.`id`
+WHERE `mountains`.`mountain_range` = "Rila"
+ORDER BY `peaks`.`elevation` DESC;
