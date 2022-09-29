@@ -1,0 +1,1 @@
+SELECT `driver_id`,`vehicle_type`, concat(`first_name`,  ' ', `last_name`) as `driver_name` FROM `vehicles` JOIN `campers` ON `vehicles`.`driver_id` = `campers`.`id`;
