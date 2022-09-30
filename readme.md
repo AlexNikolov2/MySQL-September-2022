@@ -12,6 +12,7 @@ Lectures:
 * [x] Basic CRUD
 * [ ] Built-in functions
 * [x] Data Aggregation
+* [x] Table Relations
 * [x] Subqueries and JOINs
 
 Exercises:
@@ -19,4 +20,5 @@ Exercises:
 * [x] Data definition and datatypes
 * [x] Basic CRUD
 * [x] Built-in functions
+* [x] Table Relations
 * [x] Data Aggregation
