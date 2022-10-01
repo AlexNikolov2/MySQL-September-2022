@@ -1,0 +1,1 @@
+SELECT count(*) as `count` FROM `employees` WHERE (SELECT AVG(`employees`.`salary`) FROM `employees`) < `salary` ;
