@@ -80,3 +80,8 @@ WHERE mc.`country_code` = 'BG' AND p.`elevation` > 2835 ORDER BY p.`elevation` D
 SELECT  mc.`country_code`, COUNT(m.`mountain_range`) AS `mountain_range`
 FROM `mountains_countries` AS mc JOIN `mountains` AS m ON mc.`mountain_id` = m.`id`
 WHERE mc.`country_code` IN ('BG' , 'RU', 'US') GROUP BY mc.`country_code` ORDER BY `mountain_range` DESC;
+
+--14
+
+SELECT c.`country_name`, r.`river_name` FROM `countries` AS c LEFT JOIN `countries_rivers` AS cr ON c.`country_code` = cr.`country_code` LEFT JOIN `rivers` AS r ON cr.`river_id` = r.`id`
+WHERE c.`continent_code` = 'AF' ORDER BY c.`country_name` ASC LIMIT 5;
