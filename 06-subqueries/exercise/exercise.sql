@@ -68,3 +68,9 @@ ORDER BY e.`employee_id` ASC LIMIT 5;
 
 SELECT  AVG(`employees`.`salary`) AS `min_average_salary` FROM `employees`
 GROUP BY `department_id` ORDER BY `min_average_salary` LIMIT 1;
+
+--12
+
+SELECT  mc.`country_code`, m.`mountain_range`, p.`peak_name`, p.`elevation`
+FROM `mountains` AS m JOIN `peaks` AS p ON m.`id` = p.`mountain_id` JOIN `mountains_countries` AS mc ON m.`id` = mc.`mountain_id`
+WHERE mc.`country_code` = 'BG' AND p.`elevation` > 2835 ORDER BY p.`elevation` DESC;
