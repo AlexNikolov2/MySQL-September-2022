@@ -74,3 +74,9 @@ GROUP BY `department_id` ORDER BY `min_average_salary` LIMIT 1;
 SELECT  mc.`country_code`, m.`mountain_range`, p.`peak_name`, p.`elevation`
 FROM `mountains` AS m JOIN `peaks` AS p ON m.`id` = p.`mountain_id` JOIN `mountains_countries` AS mc ON m.`id` = mc.`mountain_id`
 WHERE mc.`country_code` = 'BG' AND p.`elevation` > 2835 ORDER BY p.`elevation` DESC;
+
+--13
+
+SELECT  mc.`country_code`, COUNT(m.`mountain_range`) AS `mountain_range`
+FROM `mountains_countries` AS mc JOIN `mountains` AS m ON mc.`mountain_id` = m.`id`
+WHERE mc.`country_code` IN ('BG' , 'RU', 'US') GROUP BY mc.`country_code` ORDER BY `mountain_range` DESC;
