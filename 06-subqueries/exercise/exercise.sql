@@ -36,3 +36,9 @@ ORDER BY e.`employee_id` DESC LIMIT 3;
 SELECT  e.`first_name`, e.`last_name`, e.`hire_date`, d.`name` AS `dept_name`
 FROM `employees` AS e JOIN `departments` AS d ON e.`department_id` = d.`department_id`
 WHERE DATE(e.`hire_date`) > '1999-01-01' AND d.`name` IN ('Sales' , 'Finance') ORDER BY e.`hire_date` ASC;
+
+--07
+
+SELECT  e.`employee_id`, e.`first_name`, p.`name` AS `project_name`
+FROM `employees` AS e JOIN `employees_projects` AS ep ON e.`employee_id` = ep.`employee_id` JOIN `projects` AS p ON ep.`project_id` = p.`project_id`
+WHERE DATE(p.`start_date`) > '2002-08-13' AND p.`end_date` IS NULL ORDER BY e.`first_name` ASC , p.`name` ASC LIMIT 5;
