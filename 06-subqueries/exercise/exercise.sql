@@ -51,3 +51,10 @@ SELECT e.`employee_id`, e.`first_name`,	IF(
         ) AS `project_name`
 FROM `employees` AS e JOIN `employees_projects` AS ep ON e.`employee_id` = ep.`employee_id` JOIN `projects` AS p ON ep.`project_id` = p.`project_id`
 WHERE e.`employee_id` = 24 ORDER BY p.`name` ASC;
+
+--09
+
+SELECT  e.`employee_id`, e.`first_name`, e.`manager_id`, e2.`first_name` AS `manager_name`
+FROM `employees` AS e JOIN `employees` AS e2 ON e.`manager_id` = e2.`employee_id`
+WHERE e2.`employee_id` IN (3 , 7) ORDER BY e.`first_name` ASC;
+
