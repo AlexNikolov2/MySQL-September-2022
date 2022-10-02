@@ -85,3 +85,11 @@ WHERE mc.`country_code` IN ('BG' , 'RU', 'US') GROUP BY mc.`country_code` ORDER 
 
 SELECT c.`country_name`, r.`river_name` FROM `countries` AS c LEFT JOIN `countries_rivers` AS cr ON c.`country_code` = cr.`country_code` LEFT JOIN `rivers` AS r ON cr.`river_id` = r.`id`
 WHERE c.`continent_code` = 'AF' ORDER BY c.`country_name` ASC LIMIT 5;
+
+--15 (Bonus exercise, will be done tomorrow)
+
+--16
+SELECT  COUNT(*) AS `country_count` FROM `countries`
+WHERE`country_code` NOT IN (
+	SELECT `country_code` FROM `mountains_countries`
+    );
