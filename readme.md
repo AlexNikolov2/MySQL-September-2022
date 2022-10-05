@@ -14,6 +14,7 @@ Lectures:
 * [x] Data Aggregation
 * [x] Table Relations
 * [x] Subqueries and JOINs
+* [x] Database Programmability and Transactions
 
 Exercises:
 
