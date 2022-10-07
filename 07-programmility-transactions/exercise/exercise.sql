@@ -47,3 +47,9 @@ BEGIN
     OR `salary` >= 30000 AND `salary` <= 50000 AND salary_level = 'average' OR `salary` > 50000 AND salary_level = 'high'
     ORDER BY `first_name` DESC, `last_name` DESC;
 END
+
+--07
+
+CREATE FUNCTION ufn_is_word_comprised(set_of_letters varchar(50), word varchar(50))
+RETURNS BIT
+RETURN word REGEXP (concat('^[', set_of_letters, ']+$'));
