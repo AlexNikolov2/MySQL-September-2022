@@ -53,3 +53,12 @@ END
 CREATE FUNCTION ufn_is_word_comprised(set_of_letters varchar(50), word varchar(50))
 RETURNS BIT
 RETURN word REGEXP (concat('^[', set_of_letters, ']+$'));
+
+--08
+
+CREATE PROCEDURE usp_get_holders_full_name()
+BEGIN
+	SELECT CONCAT(`first_name`, ' ', `last_name`) AS `full_name` FROM `account_holders` ORDER BY `full_name` ASC;
+END
+
+--09
