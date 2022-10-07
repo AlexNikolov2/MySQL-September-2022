@@ -10,7 +10,7 @@ Lectures:
 
 * [x] Data definition and datatypes
 * [x] Basic CRUD
-* [ ] Built-in functions
+* [x] Built-in functions
 * [x] Data Aggregation
 * [x] Table Relations
 * [x] Subqueries and JOINs
