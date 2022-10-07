@@ -61,4 +61,31 @@ BEGIN
 	SELECT CONCAT(`first_name`, ' ', `last_name`) AS `full_name` FROM `account_holders` ORDER BY `full_name` ASC;
 END
 
---09
+--09 // to be solved tomorrow
+
+--10
+
+CREATE FUNCTION ufn_calculate_future_value(sum DECIMAL(10, 4), interest_rate DECIMAL(10, 4), years INT) RETURNS DECIMAL(10, 4) DETERMINISTIC
+BEGIN
+	RETURN sum * POW((1 + interest_rate), years);
+END
+
+--11
+
+CREATE FUNCTION ufn_calculate_future_value(sum DECIMAL(10, 4), interest_rate DECIMAL(10, 4), years INT) RETURNS DECIMAL(10, 4) DETERMINISTIC
+BEGIN
+	RETURN sum * POW((1 + interest_rate), years);
+END;
+        --same function
+CREATE PROCEDURE usp_calculate_future_value_for_account(
+    account_id INT, interest_rate DECIMAL(19, 4))
+BEGIN
+    SELECT 
+         a.id AS 'account_id', h.first_name, h.last_name, a.balance AS 'current_balance',
+         ufn_calculate_future_value(a.balance, interest_rate, 5) AS 'balance_in_5_years'
+    FROM
+        `account_holders` AS h JOIN `accounts` AS a ON h.id=a.account_holder_id
+    WHERE a.id = account_id;
+END
+
+--12
