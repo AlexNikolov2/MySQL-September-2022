@@ -13,3 +13,10 @@ BEGIN
 end
 
 --03
+
+CREATE PROCEDURE usp_get_towns_starting_with(starting_string VARCHAR(10))
+BEGIN
+	SELECT `name` FROM `towns` WHERE LEFT(`name`, CHAR_LENGTH(starting_string)) = starting_string ORDER BY `name` ASC;
+END
+
+--04
