@@ -99,3 +99,9 @@ delete from `players` where `age` >= 45
 --05
 
 SELECT `first_name`, `age`, `salary` FROM players ORDER By `salary` DESC;
+
+--06
+
+SELECT `id`, concat(`first_name`, ' ', `last_name`) as `full_name`, `age`, `position`, `hire_date` FROM players WHERE `age` < 23 AND `position` = 'A' AND `hire_date` IS NULL AND (
+SELECT `strength` FROM `skills_data` where `skills_data_id` = `id`)> 50
+ORDER BY `salary` ASC, `age` ASC;
