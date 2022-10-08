@@ -93,3 +93,7 @@ update `coaches` set `coach_level` = `coach_level` + 1
 WHERE LEFT(`first_name`, 1) = 'A' AND `id` IN ( SELECT `coach_id` FROM `players_coaches` ) 
 
 --04
+
+delete from `players` where `age` >= 45
+
+--05
