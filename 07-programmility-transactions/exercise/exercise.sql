@@ -63,6 +63,12 @@ END
 
 --09 // to be solved tomorrow
 
+CREATE PROCEDURE usp_get_holders_with_balance_higher_than(salary_input DECIMAL(19,4))
+BEGIN
+	SELECT ah.`first_name`, ah.`last_name` FROM `account_holders` AS ah JOIN `accounts` AS a ON ah.`id` = a.`account_holder_id`
+    GROUP BY ah.`id` HAVING SUM(a.`balance`) > salary_input ORDER BY ah.`id` ASC;
+END
+
 --10
 
 CREATE FUNCTION ufn_calculate_future_value(sum DECIMAL(10, 4), interest_rate DECIMAL(10, 4), years INT) RETURNS DECIMAL(10, 4) DETERMINISTIC
