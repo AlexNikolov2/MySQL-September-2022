@@ -97,3 +97,5 @@ WHERE LEFT(`first_name`, 1) = 'A' AND `id` IN ( SELECT `coach_id` FROM `players_
 delete from `players` where `age` >= 45
 
 --05
+
+SELECT `first_name`, `age`, `salary` FROM players ORDER By `salary` DESC;
