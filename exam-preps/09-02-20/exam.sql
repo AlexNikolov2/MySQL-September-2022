@@ -87,3 +87,9 @@ CREATE TABLE `players_coaches`(
 
 insert into `coaches` (`first_name`, `last_name`, `salary`, `coach_level`) SELECT `first_name`, `last_name`, `salary` * 2, char_length(`first_name`) FROM `players` WHERE `age` >= 45
 
+--03
+
+update `coaches` set `coach_level` = `coach_level` + 1
+WHERE LEFT(`first_name`, 1) = 'A' AND `id` IN ( SELECT `coach_id` FROM `players_coaches` ) 
+
+--04
