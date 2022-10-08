@@ -23,4 +23,4 @@ Exercises:
 * [x] Built-in functions
 * [x] Table Relations
 * [x] Data Aggregation
-* [ ] Database Programmility
+* [x] Database Programmility
