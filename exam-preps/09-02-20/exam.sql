@@ -85,16 +85,16 @@ CREATE TABLE `players_coaches`(
 
 --02
 
-insert into `coaches` (`first_name`, `last_name`, `salary`, `coach_level`) SELECT `first_name`, `last_name`, `salary` * 2, char_length(`first_name`) FROM `players` WHERE `age` >= 45
+insert into `coaches` (`first_name`, `last_name`, `salary`, `coach_level`) SELECT `first_name`, `last_name`, `salary` * 2, char_length(`first_name`) FROM `players` WHERE `age` >= 45;
 
 --03
 
 update `coaches` set `coach_level` = `coach_level` + 1
-WHERE LEFT(`first_name`, 1) = 'A' AND `id` IN ( SELECT `coach_id` FROM `players_coaches` ) 
+WHERE LEFT(`first_name`, 1) = 'A' AND `id` IN ( SELECT `coach_id` FROM `players_coaches` );
 
 --04
 
-delete from `players` where `age` >= 45
+delete from `players` where `age` >= 45;
 
 --05
 
@@ -120,7 +120,7 @@ SELECT MAX(`sd`.speed) AS `max_speed`, `t`.`name` as `town_name` FROM `towns` as
     LEFT JOIN `teams` as `te` ON `te`.`stadium_id` = `s`.`id`
     LEFT JOIN `players` as `p` on `p`.`team_id` = `te`.`id`
     LEFT JOIN `skills_data` as `sd` on `sd`.`id` = `p`.`skills_data_id`
-WHERE `te`.`name` != 'Devify' GROUP BY `t`.`id` ORDER BY `max_speed` DESC, `t`.`name` ASC
+WHERE `te`.`name` != 'Devify' GROUP BY `t`.`id` ORDER BY `max_speed` DESC, `t`.`name` ASC;
 
 --09
 
@@ -129,4 +129,6 @@ SELECT `c`.`name`, count(`p`.`id`) AS `total_count_of_players`, sum(`p`.`salary`
     LEFT JOIN `stadiums` as `s` on `t`.`id` = `s`.`town_id`
     LEFT JOIN `teams` as `te` on `te`.`stadium_id` = `s`.`id`
     LEFT JOIN `players` as `p` ON `p`.`team_id` = `te`.`id`
-GROUP BY `c`.`id` ORDER BY `total_count_of_players` DESC, `c`.`name` ASC
+GROUP BY `c`.`id` ORDER BY `total_count_of_players` DESC, `c`.`name` ASC;
+
+--10
