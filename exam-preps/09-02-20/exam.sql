@@ -121,3 +121,12 @@ SELECT MAX(`sd`.speed) AS `max_speed`, `t`.`name` as `town_name` FROM `towns` as
     LEFT JOIN `players` as `p` on `p`.`team_id` = `te`.`id`
     LEFT JOIN `skills_data` as `sd` on `sd`.`id` = `p`.`skills_data_id`
 WHERE `te`.`name` != 'Devify' GROUP BY `t`.`id` ORDER BY `max_speed` DESC, `t`.`name` ASC
+
+--09
+
+SELECT `c`.`name`, count(`p`.`id`) AS `total_count_of_players`, sum(`p`.`salary`) as `total_sum_of_salaries` FROM `countries` as `c`
+	LEFT JOIN `towns` as `t` on `c`.`id` = `t`.`country_id`
+    LEFT JOIN `stadiums` as `s` on `t`.`id` = `s`.`town_id`
+    LEFT JOIN `teams` as `te` on `te`.`stadium_id` = `s`.`id`
+    LEFT JOIN `players` as `p` ON `p`.`team_id` = `te`.`id`
+GROUP BY `c`.`id` ORDER BY `total_count_of_players` DESC, `c`.`name` ASC
