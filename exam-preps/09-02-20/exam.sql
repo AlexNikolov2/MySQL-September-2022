@@ -113,3 +113,11 @@ SELECT `name` , `established`, `fan_base`, (
     ) as `players_count` 
 FROM `teams` ORDER BY `players_count` DESC, `fan_base` DESC; 
 
+--08
+
+SELECT MAX(`sd`.speed) AS `max_speed`, `t`.`name` as `town_name` FROM `towns` as `t` 
+	LEFT JOIN `stadiums` as `s` ON `t`.`id` = `s`.`town_id`
+    LEFT JOIN `teams` as `te` ON `te`.`stadium_id` = `s`.`id`
+    LEFT JOIN `players` as `p` on `p`.`team_id` = `te`.`id`
+    LEFT JOIN `skills_data` as `sd` on `sd`.`id` = `p`.`skills_data_id`
+WHERE `te`.`name` != 'Devify' GROUP BY `t`.`id` ORDER BY `max_speed` DESC, `t`.`name` ASC
