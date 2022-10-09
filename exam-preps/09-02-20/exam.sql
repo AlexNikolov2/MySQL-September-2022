@@ -105,3 +105,11 @@ SELECT `first_name`, `age`, `salary` FROM players ORDER By `salary` DESC;
 SELECT `id`, concat(`first_name`, ' ', `last_name`) as `full_name`, `age`, `position`, `hire_date` FROM players WHERE `age` < 23 AND `position` = 'A' AND `hire_date` IS NULL AND (
 SELECT `strength` FROM `skills_data` where `skills_data_id` = `id`)> 50
 ORDER BY `salary` ASC, `age` ASC;
+
+--07
+
+SELECT `name` , `established`, `fan_base`, (
+	SELECT COUNT(`id`) FROM `players` WHERE `team_id` = `teams`.`id`
+    ) as `players_count` 
+FROM `teams` ORDER BY `players_count` DESC, `fan_base` DESC; 
+
