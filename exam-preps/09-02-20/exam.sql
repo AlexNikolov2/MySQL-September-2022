@@ -132,3 +132,18 @@ SELECT `c`.`name`, count(`p`.`id`) AS `total_count_of_players`, sum(`p`.`salary`
 GROUP BY `c`.`id` ORDER BY `total_count_of_players` DESC, `c`.`name` ASC;
 
 --10
+
+CREATE FUNCTION udf_stadium_players_count (stadium_name VARCHAR(30))
+RETURNS INT
+DETERMINISTIC
+BEGIN
+	RETURN (SELECT COUNT(`p`.`id`)
+	FROM `stadiums` AS `s`
+	LEFT JOIN `teams` AS `t`
+    ON `t`.`stadium_id` = `s`.`id`
+	LEFT JOIN `players` AS `p`
+    ON `p`.`team_id` = `t`.`id`
+	WHERE `s`.`name` = stadium_name);
+END;
+
+--11
