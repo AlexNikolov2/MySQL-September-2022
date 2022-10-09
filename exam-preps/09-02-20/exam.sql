@@ -147,3 +147,29 @@ BEGIN
 END;
 
 --11
+
+CREATE PROCEDURE udp_find_playmaker (`min_dribble` INT, `team_name` VARCHAR(45))
+BEGIN
+SELECT 
+    CONCAT(`first_name`, ' ', `last_name`) AS `full_name`,
+    `age`,
+    `salary`,
+    `sd`.`dribbling` AS `dribbling`,
+    `sd`.`speed` AS `speed`,
+    `t`.`name` AS `team_name`
+FROM
+    `players`
+        LEFT JOIN
+    `teams` AS `t` ON `players`.`team_id` = `t`.`id`
+        LEFT JOIN
+    `skills_data` AS `sd` ON `sd`.`id` = `players`.`skills_data_id`
+WHERE
+    (SELECT 
+            AVG(`speed`)
+        FROM
+            `skills_data`) < `speed`
+        AND `dribbling` > `min_dribble`
+        AND `t`.`name` = `team_name`
+ORDER BY `speed` DESC
+LIMIT 1;
+END;
