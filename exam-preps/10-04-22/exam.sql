@@ -114,3 +114,12 @@ concat(reverse(a.`last_name`), length(a.`last_name`), '@cast.com') AS 'email',
 FROM `actors` AS a
 WHERE a.`id` NOT IN (SELECT `actor_id` FROM `movies_actors`)
 ORDER BY `height` ASC;
+
+--08
+
+SELECT c.`name`, COUNT(m.`id`) as `movies_count`
+FROM `movies` as m
+JOIN `countries` as c on c.`id` = m.`country_id`
+GROUP BY c.`name`
+HAVING `movies_count` >= 7
+ORDER BY `name` DESC;
