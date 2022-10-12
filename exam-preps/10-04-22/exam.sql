@@ -123,3 +123,17 @@ JOIN `countries` as c on c.`id` = m.`country_id`
 GROUP BY c.`name`
 HAVING `movies_count` >= 7
 ORDER BY `name` DESC;
+
+--09
+
+SELECT m.`title`,
+       (CASE
+            when mi.`rating` <= 4 THEN 'poor'
+            when mi.`rating` <= 7 THEN 'good'
+            else 'excellent'
+        END) as `rating`,
+       IF(mi.`has_subtitles`, 'english', '-') `subtitles`,
+       mi.`budget`
+FROM `movies_additional_info` as `mi`
+JOIN `movies` as m on mi.`id` = m.`movie_info_id`
+ORDER BY `budget` DESC;
