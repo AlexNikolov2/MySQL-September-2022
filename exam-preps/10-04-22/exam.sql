@@ -90,6 +90,11 @@ LEFT JOIN `movies` AS m
 ON c.`id` =  m.`country_id`
 WHERE m.`country_id` IS NULL;
 
+--05
+
+SELECT * FROM `countries`
+ORDER BY `currency` DESC, `id`
+
 --06
 
 SELECT m.`id`, m2.`title`, m.`runtime`, m.`budget`, m.`release_date`
