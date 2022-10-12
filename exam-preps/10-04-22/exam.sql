@@ -103,3 +103,14 @@ JOIN `movies` m2 on m.`id` = m2.`movie_info_id`
 WHERE year(m.`release_date`) between 1996 and 1999
 ORDER by m.`runtime`, m.`id`
 LIMIT 20;
+
+
+--07
+
+SELECT concat(a.`first_name`, ' ', a.`last_name`) as `full_name`,
+concat(reverse(a.`last_name`), length(a.`last_name`), '@cast.com') AS 'email',
+       2022 - YEAR(a.`birthdate`) AS age, 
+       a.`height` 
+FROM `actors` AS a
+WHERE a.`id` NOT IN (SELECT `actor_id` FROM `movies_actors`)
+ORDER BY `height` ASC;
