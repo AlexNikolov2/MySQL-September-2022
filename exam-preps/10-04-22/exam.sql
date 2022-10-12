@@ -89,3 +89,12 @@ FROM `countries` AS c
 LEFT JOIN `movies` AS m
 ON c.`id` =  m.`country_id`
 WHERE m.`country_id` IS NULL;
+
+--06
+
+SELECT m.`id`, m2.`title`, m.`runtime`, m.`budget`, m.`release_date`
+FROM `movies_additional_info` as m
+JOIN `movies` m2 on m.`id` = m2.`movie_info_id`
+WHERE year(m.`release_date`) between 1996 and 1999
+ORDER by m.`runtime`, m.`id`
+LIMIT 20;
