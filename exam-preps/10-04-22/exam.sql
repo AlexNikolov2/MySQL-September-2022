@@ -137,3 +137,23 @@ SELECT m.`title`,
 FROM `movies_additional_info` as `mi`
 JOIN `movies` as m on mi.`id` = m.`movie_info_id`
 ORDER BY `budget` DESC;
+
+--10
+
+CREATE function udf_actor_history_movies_count(full_name VARCHAR (50))
+	returns int
+    deterministic
+BEGIN
+	declare movies_count INT;
+    SET movies_count := (
+		SELECT count(g.name) movies FROM actors as a
+        JOIN movies_actors ma on a.id = ma.actor_id
+                 JOIN genres_movies gm on ma.movie_id = gm.movie_id
+                 JOIN genres g on g.id = gm.genre_id
+        WHERE CONCAT(a.first_name, ' ', a.last_name) = full_name AND g.name = 'History'
+        GROUP BY  g.name
+    );
+    RETURN movies_count;
+    END
+
+--11
