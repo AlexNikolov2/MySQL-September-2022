@@ -114,3 +114,12 @@ SELECT  c.`full_name`, COUNT(c.`id`) AS `count_of_cars`, SUM(co.`bill`) AS `tota
 WHERE c.`full_name` LIKE '_a%'
 GROUP BY c.`id` HAVING `count_of_cars` > 1
 ORDER BY c.`full_name`;
+
+--09
+
+SELECT a.`name`, IF(HOUR(c.`start`) BETWEEN 6 AND 20, 'Day', 'Night') AS `day_time`, c.`bill`, cl.`full_name`, ca.`make`, ca.`model`, cat.`name` FROM `addresses` AS a
+	JOIN `courses` AS c ON a.`id` = c.`from_address_id`
+	JOIN `cars` AS ca ON c.`car_id` = ca.`id`
+	JOIN `categories` AS cat ON ca.`category_id` = cat.`id`
+	JOIN `clients` AS cl ON c.`client_id` = cl.`id`
+ORDER BY c.`id`;
