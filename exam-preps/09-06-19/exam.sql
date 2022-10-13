@@ -66,3 +66,9 @@ UPDATE `employees_clients` AS ec
 SET ec.`employee_id` = s.`employee_id`
 WHERE ec.`employee_id` = ec.`client_id`;
 
+--04
+
+DELETE FROM `employees` WHERE `id` NOT IN (SELECT `employee_id` FROM `employees_clients`);
+
+--05
+
