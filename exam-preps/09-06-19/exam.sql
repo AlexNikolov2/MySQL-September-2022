@@ -112,3 +112,13 @@ SELECT  b.`name`, COUNT(ca.`id`) AS `count_of_cards` FROM `branches` AS b
 	LEFT JOIN `bank_accounts` AS ba ON c.`id` = ba.`client_id`
 	LEFT JOIN `cards` AS ca ON ba.`id` = ca.`bank_account_id`
 GROUP BY b.`name` ORDER BY `count_of_cards` DESC , b.`name` ASC;
+
+--10
+
+CREATE FUNCTION udf_client_cards_count(`name` VARCHAR(30)) RETURNS INT DETERMINISTIC
+	RETURN (
+    SELECT COUNT(ca.`id`) AS `cards` FROM `clients` AS c
+	JOIN `bank_accounts` AS b ON c.`id` = b.`client_id`
+	JOIN `cards` AS ca on b.`id` = ca.`bank_account_id`
+	WHERE c.`full_name` = `name`
+    );
