@@ -123,3 +123,9 @@ SELECT a.`name`, IF(HOUR(c.`start`) BETWEEN 6 AND 20, 'Day', 'Night') AS `day_ti
 	JOIN `categories` AS cat ON ca.`category_id` = cat.`id`
 	JOIN `clients` AS cl ON c.`client_id` = cl.`id`
 ORDER BY c.`id`;
+
+--10
+
+CREATE FUNCTION udf_courses_by_client (phone_num VARCHAR (20)) RETURNS INT RETURN(
+	SELECT COUNT(*) FROM `clients` AS c JOIN `courses` AS co ON c.`id` = co.`client_id` WHERE c.`phone_number` = phone_num
+);
