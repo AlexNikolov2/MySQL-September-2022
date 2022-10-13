@@ -91,3 +91,17 @@ SELECT ca.`id`, concat(ca.`card_number`, ' : ', c.`full_name`) as `card_token` F
 JOIN `bank_accounts` as ba on c.`id` = ba.`client_id`
 JOIn `cards` as ca on ba.`id` = ca.`bank_account_id`
 ORDER BY ca.`id` DESC
+
+--08
+
+SELECT concat(`first_name`, ' ', `last_name`) AS `name`,
+    `started_on`,
+    `count_of_clients`
+FROM `employees` AS e
+	JOIN (
+    SELECT `employee_id`, count(`client_id`) AS `count_of_clients` FROM `employees_clients` GROUP BY `employee_id`
+    ) AS c ON e.`id` = c.`employee_id`
+ORDER BY `count_of_clients` DESC , `employee_id` ASC LIMIT 5;
+
+--09
+
