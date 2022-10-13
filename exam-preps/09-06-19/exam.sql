@@ -72,3 +72,5 @@ DELETE FROM `employees` WHERE `id` NOT IN (SELECT `employee_id` FROM `employees_
 
 --05
 
+SELECT `id`, `full_name` FROM `clients` ORDER BY `id` ASC;
+
