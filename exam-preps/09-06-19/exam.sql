@@ -48,3 +48,21 @@ CREATE TABLE `cards`(
     FOREIGN KEY (`bank_account_id`)
     REFERENCES `bank_accounts`(`id`)
 );
+
+--02
+
+INSERT into `cards` (`card_number`, `card_status`, `bank_account_id`)
+SELECT reverse(`full_name`), 'Active', `id` FROM `clients` 
+WHERE `id` BETWEEN 191 and 200; 
+
+--03
+
+UPDATE `employees_clients` AS ec
+	JOIN (
+    SELECT ec2.`employee_id`, COUNT(ec2.`client_id`) AS `count` FROM `employees_clients` AS ec2
+    GROUP BY ec2.`employee_id`
+    ORDER BY `count` , ec2.`employee_id`
+    ) AS s 
+SET ec.`employee_id` = s.`employee_id`
+WHERE ec.`employee_id` = ec.`client_id`;
+
