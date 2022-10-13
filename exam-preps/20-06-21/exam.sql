@@ -129,3 +129,25 @@ ORDER BY c.`id`;
 CREATE FUNCTION udf_courses_by_client (phone_num VARCHAR (20)) RETURNS INT RETURN(
 	SELECT COUNT(*) FROM `clients` AS c JOIN `courses` AS co ON c.`id` = co.`client_id` WHERE c.`phone_number` = phone_num
 );
+
+--11
+
+DELIMITER ###
+CREATE PROCEDURE udp_courses_by_address (address_name VARCHAR(100))
+BEGIN
+SELECT a.`name`, cl.`full_name`,
+    CASE 
+		WHEN c.`bill` <= 20 THEN 'Low'
+        WHEN c.`bill` <= 30 THEN 'Medium'
+        ELSE 'High'
+	END AS `level_of_bill`,
+    ca.`make`, ca.`condition`, cat.`name`
+FROM `addresses` AS a
+	JOIN `courses` AS c ON c.`from_address_id` = a.`id`
+	JOIN `clients` AS cl ON c.`client_id` = cl.`id`
+	JOIN `cars` AS ca ON c.`car_id` = ca.`id`
+	JOIN `categories` AS cat ON ca.`category_id` = cat.`id`
+WHERE a.`name` = address_name
+ORDER BY ca.`make` ASC, cl.`full_name` ASC;
+END
+###
