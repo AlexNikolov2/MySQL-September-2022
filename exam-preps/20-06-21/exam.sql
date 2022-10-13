@@ -67,3 +67,11 @@ CREATE TABLE `cars_drivers`(
     FOREIGN KEY (`driver_id`)
     REFERENCES `drivers`(`id`)
 );
+
+--02
+
+INSERT INTO `clients`(`full_name`, `phone_number`)
+SELECT
+	CONCAT(d.`first_name`, ' ', d.`last_name`), 
+    CONCAT('(088) 9999', d.`id` * 2)
+FROM `drivers` AS d WHERE d.`id` BETWEEN 10 AND 20;
