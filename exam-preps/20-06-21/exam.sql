@@ -98,3 +98,10 @@ SELECT  d.`first_name`, d.`last_name`, c.`make`, c.`model`, c.`mileage` FROM `ca
 	JOIN `drivers` AS d ON cd.`driver_id` = d.`id`
 WHERE c.`mileage` IS NOT NULL
 ORDER BY c.`mileage` DESC , d.`first_name` ASC;
+
+--07
+
+SELECT c.`id` AS `car_id`, c.`make`, c.`mileage`, COUNT(co.`id`) AS `count_of_courses`, ROUND(AVG(co.`bill`), 2) AS `avg_bill` FROM `cars` AS c
+	LEFT JOIN `courses` AS co ON c.`id` = co.`car_id`
+GROUP BY c.`id` HAVING `count_of_courses` != 2
+ORDER BY `count_of_courses` DESC , `car_id` ASC;
