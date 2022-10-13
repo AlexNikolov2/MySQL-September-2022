@@ -122,3 +122,12 @@ CREATE FUNCTION udf_client_cards_count(`name` VARCHAR(30)) RETURNS INT DETERMINI
 	JOIN `cards` AS ca on b.`id` = ca.`bank_account_id`
 	WHERE c.`full_name` = `name`
     );
+
+--11
+
+CREATE PROCEDURE udp_clientinfo(`name` VARCHAR(20))
+BEGIN
+	SELECT c.`full_name`, c.`age`, b.`account_number`, concat('$' , b.`balance`) as `balance` FROM `clients` as c
+    JOIN `bank_accounts` as b on c.`id` = b.`client_id` 
+    WHERE c.`full_name` = `name`;
+    END
