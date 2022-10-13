@@ -74,3 +74,13 @@ DELETE FROM `employees` WHERE `id` NOT IN (SELECT `employee_id` FROM `employees_
 
 SELECT `id`, `full_name` FROM `clients` ORDER BY `id` ASC;
 
+
+--06
+
+SELECT  `id`,
+    CONCAT(`first_name`, ' ', `last_name`) as `full_name`,
+    CONCAT('$', `salary`) as `salary`,
+    `started_on`
+FROM `employees`
+WHERE `salary` >= 100000 and DATE(`started_on`) >= '2018-01-01'
+ORDER BY `salary` DESC , `id` ASC;
