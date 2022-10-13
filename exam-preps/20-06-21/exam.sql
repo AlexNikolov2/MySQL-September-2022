@@ -105,3 +105,12 @@ SELECT c.`id` AS `car_id`, c.`make`, c.`mileage`, COUNT(co.`id`) AS `count_of_co
 	LEFT JOIN `courses` AS co ON c.`id` = co.`car_id`
 GROUP BY c.`id` HAVING `count_of_courses` != 2
 ORDER BY `count_of_courses` DESC , `car_id` ASC;
+
+--08
+
+SELECT  c.`full_name`, COUNT(c.`id`) AS `count_of_cars`, SUM(co.`bill`) AS `total_sum` FROM `clients` AS c
+	JOIN `courses` AS co ON c.`id` = co.`client_id`
+    JOIN `cars` AS ca ON co.`car_id` = ca.`id`
+WHERE c.`full_name` LIKE '_a%'
+GROUP BY c.`id` HAVING `count_of_cars` > 1
+ORDER BY c.`full_name`;
