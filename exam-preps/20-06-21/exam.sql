@@ -80,3 +80,9 @@ FROM `drivers` AS d WHERE d.`id` BETWEEN 10 AND 20;
 UPDATE `cars` 
 SET `condition` = 'C'
 WHERE `mileage` >= 800000 OR `mileage` is null and `year` <=2010 AND `make` not in ('Mercedes-Benz');
+
+--04
+
+DELETE c FROM `clients` AS c
+	LEFT JOIN `courses` AS co ON c.`id` = co.`client_id` 
+WHERE co.`id` IS NULL AND CHAR_LENGTH(c.`full_name`);
