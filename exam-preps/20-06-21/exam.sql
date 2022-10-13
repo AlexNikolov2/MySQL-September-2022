@@ -75,3 +75,8 @@ SELECT
 	CONCAT(d.`first_name`, ' ', d.`last_name`), 
     CONCAT('(088) 9999', d.`id` * 2)
 FROM `drivers` AS d WHERE d.`id` BETWEEN 10 AND 20;
+
+--03
+UPDATE `cars` 
+SET `condition` = 'C'
+WHERE `mileage` >= 800000 OR `mileage` is null and `year` <=2010 AND `make` not in ('Mercedes-Benz');
