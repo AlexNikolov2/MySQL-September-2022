@@ -84,3 +84,10 @@ SELECT  `id`,
 FROM `employees`
 WHERE `salary` >= 100000 and DATE(`started_on`) >= '2018-01-01'
 ORDER BY `salary` DESC , `id` ASC;
+
+--07
+
+SELECT ca.`id`, concat(ca.`card_number`, ' : ', c.`full_name`) as `card_token` FROM `clients` as c
+JOIN `bank_accounts` as ba on c.`id` = ba.`client_id`
+JOIn `cards` as ca on ba.`id` = ca.`bank_account_id`
+ORDER BY ca.`id` DESC
