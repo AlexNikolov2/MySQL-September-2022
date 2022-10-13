@@ -86,3 +86,7 @@ WHERE `mileage` >= 800000 OR `mileage` is null and `year` <=2010 AND `make` not 
 DELETE c FROM `clients` AS c
 	LEFT JOIN `courses` AS co ON c.`id` = co.`client_id` 
 WHERE co.`id` IS NULL AND CHAR_LENGTH(c.`full_name`);
+
+--05
+
+SELECT `make`, `model`, `condition` FROM `cars` ORDER BY `id` ASC;
