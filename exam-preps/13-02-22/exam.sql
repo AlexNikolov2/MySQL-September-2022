@@ -85,3 +85,5 @@ where `quantity_in_stock` between 60 and 70;
 DELETE `c` from `customers` as `c` left join `orders` on `c`.`id` = `orders`.`customer_id` where `orders`.`customer_id` is null;
 
 --05
+
+select `id`, `name` from `categories` order by `name` desc;
