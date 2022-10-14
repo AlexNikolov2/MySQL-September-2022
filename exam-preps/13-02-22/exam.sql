@@ -131,3 +131,16 @@ RETURN `count`;
 END;
 
 --11
+
+CREATE PROCEDURE `udp_reduce_price`(`category_name`VARCHAR(50))
+
+BEGIN 
+UPDATE `products` AS `P`
+JOIN `categories` AS `C`
+ON `P`.`category_id` = `C`.`id`
+JOIN `reviews` AS `R`
+ON `P`.`review_id` = `R`.`id`
+SET `P`.`price` =  0.7 * `P`.`price`
+WHERE `C`.`name` = `category_name`
+AND `R`.`rating` < 4;
+END
