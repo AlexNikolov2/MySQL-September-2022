@@ -87,3 +87,8 @@ DELETE `c` from `customers` as `c` left join `orders` on `c`.`id` = `orders`.`cu
 --05
 
 select `id`, `name` from `categories` order by `name` desc;
+
+--06
+
+select `id`, `brand_id`, `name`, `quantity_in_stock` from `products` where `price` > 1000 and `quantity_in_stock` < 30
+order by `quantity_in_stock` asc, `id` asc;
