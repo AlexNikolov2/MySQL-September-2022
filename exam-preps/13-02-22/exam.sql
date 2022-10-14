@@ -97,3 +97,9 @@ order by `quantity_in_stock` asc, `id` asc;
 
 select * from `reviews` where left(`content`, 2) = 'My' and char_length(`content`) > 61
 order by `rating` desc; 
+
+--08
+
+select concat(`first_name`, ' ', `last_name`) as `full_name`, `address`, `order_datetime` from `customers` join `orders` on `customers`.`id` = `orders`.`customer_id` where year(`order_datetime`) <= 2018
+order by `full_name` desc;
+
