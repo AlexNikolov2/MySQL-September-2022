@@ -76,3 +76,9 @@ INSERT INTO `reviews` (`content`, `picture_url`, `published_at`, `rating`)
 
 --03
 
+UPDATE `products`
+SET `quantity_in_stock` = `quantity_in_stock` - 5
+where `quantity_in_stock` between 60 and 70;
+
+--04
+
