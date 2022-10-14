@@ -109,3 +109,25 @@ select count(`p`.`id`) as `items_count`, `c`.`name`, sum(`p`.`quantity_in_stock`
 join `categories` as `c` on `p`.`category_id` = `c`.`id`
 group by `category_id`
 order by `items_count` desc, `total_quantity` limit 5;
+
+--10
+CREATE FUNCTION `udf_customer_products_count`(`name` VARCHAR(30)) 
+RETURNS INT
+DETERMINISTIC
+
+BEGIN
+DECLARE `count` INT;
+SET `count` = (SELECT COUNT(`P`.`id`)
+FROM `products` AS `P`
+JOIN `orders_products` AS `O_P`
+ON `P`.`id` = `O_P`.`product_id`
+JOIN `orders` AS `O`
+ON `O_P`.`order_id` = `O`.`id`
+JOIN `customers` AS `C`
+ON `O`.`customer_id` = `C`.`id`
+WHERE `C`.`first_name` = `name`
+);
+RETURN `count`;
+END;
+
+--11
