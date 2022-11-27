@@ -25,4 +25,4 @@ Exercises:
 * [x] Data Aggregation
 * [x] Database Programmility
 
-Certificate: ![certificado](https://softuni.bg/certificates/details/142784/5751127d)
+Certificate: !(https://softuni.bg/certificates/details/142784/5751127d)
